@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Тестовое задание мтс</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+  </head>
+  <body>
+   <button value="Refresh Page" onclick="location.href='http://localhost:8000'" class="btn btn-danger">Парсить</button>
+  <!--  <input type="button" value="Перейти на сайт" onclick="location.href='http://localhost:8000'"> -->
+  <br>
+    <br>
+    <form action="" method="get">
+        {{ form.as_p }}
+        <input type="submit" value="Поиск">
+    </form>
+    <table class="table table-striped">
+    <thead>
+    <tr>
+      <th scope="col">Название</th>
+      <th scope="col">Параметры</th>
+      <th scope="col">Опции</th>
+      <th scope="col">Цена</th>
+      <th scope="col">Старая цена</th>
+    </tr>
+    </thead>
+  <tbody class="table-group-divider">
+      {% for tarif in tarifs %}
+          <tr>
+        <td>{{ tarif.title }}</td>
+        <td>{{ tarif.parametrs }}</td>
+        <td>{{ tarif.options }}</td>
+        <td>{{ tarif.price }}</td>
+        <td>{{ tarif.price_old }}</td>
+          </tr>
+
+    {% endfor %}
+      </tbody>
+</table>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+  </body>
+</html>
