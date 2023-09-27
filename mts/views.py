@@ -37,9 +37,7 @@ def index(request):
     text_response = response.text
     soup = BeautifulSoup(text_response, "html.parser")
     scripts = soup.find_all("script")
-    data = [
-        script for script in scripts if "window.globalSettings.tariffs =" in script.text
-    ][0]
+    data = next(script for script in scripts if "window.globalSettings.tariffs =" in script.text)
     data_text = data.text.split(" = ")[-1].strip()[:-1]
     data_json = json.loads(data_text)
     actual_tariffs = data_json.get("actualTariffs")
